@@ -22,6 +22,7 @@
       background-position: left; /* Position the image in the center */
       background-repeat: no-repeat; /* Prevent image repetition */
       position: relative;
+      z-index: 1; /* Set lower z-index for the background image */
     }
 
     /* Hover box styles */
@@ -32,6 +33,7 @@
       background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent box */
       border: 2px solid red; /* Visible red border for the hover box */
       cursor: pointer;
+      z-index: 10; /* Ensure hover boxes are on top */
     }
 
     .hover-box .tooltip {
@@ -46,7 +48,7 @@
       left: 50%;
       transform: translateX(-50%);
       white-space: nowrap;
-      z-index: 10;
+      z-index: 20; /* Tooltip should be above the hover box */
     }
 
     /* Show tooltip when hovering */
