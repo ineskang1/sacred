@@ -4,34 +4,35 @@
   <meta charset="UTF-8">
   <title>Horizontal Scroll with Hover Boxes</title>
   <style>
+    /* General body setup */
     body {
       margin: 0;
       padding: 0;
-      overflow: hidden;
+      overflow-x: auto; /* Enable horizontal scroll */
+      overflow-y: hidden; /* Disable vertical scroll */
+      white-space: nowrap; /* Make child elements inline for horizontal scroll */
     }
 
+    /* Wrapper to contain the horizontal sections */
     .scroll-wrapper {
       display: flex;
-      flex-direction: row;
-      width: max-content;
+      width: max-content; /* Ensure sections together stretch beyond viewport */
       height: 100vh;
-      overflow-x: auto;
-      overflow-y: hidden;
-      white-space: nowrap;
     }
 
+    /* Section setup */
     .section {
-      flex: none;
-      width: 100vw;
-      height: 100vh;
-      background-image: url('background.jpg'); /* Local file */
-      background-size: cover;
+      flex: none; /* Prevent flex item from shrinking */
+      width: 100vw; /* Full viewport width per section */
+      height: 100vh; /* Full viewport height */
+      background-image: url('background.jpg'); /* Your background image */
+      background-size: cover; /* Cover the section with the image */
       background-position: center;
       background-repeat: no-repeat;
       position: relative;
-}
+    }
 
-
+    /* Hover box styles */
     .hover-box {
       position: absolute;
       width: 100px;
@@ -47,19 +48,21 @@
       padding: 6px 10px;
       border-radius: 4px;
       position: absolute;
-      top: 110%;
+      top: 110%; /* Position tooltip below the hover box */
       left: 50%;
       transform: translateX(-50%);
       white-space: nowrap;
       z-index: 10;
     }
 
+    /* Show tooltip when hovering */
     .hover-box:hover .tooltip {
       visibility: visible;
     }
   </style>
 </head>
 <body>
+  <!-- Wrapper for the horizontal scrolling -->
   <div class="scroll-wrapper">
     <div class="section">
       <div class="hover-box" style="top: 40%; left: 30%;">
@@ -68,19 +71,4 @@
       <div class="hover-box" style="top: 70%; left: 60%;">
         <div class="tooltip">Another hotspot</div>
       </div>
-    </div>
-
-    <div class="section">
-      <div class="hover-box" style="top: 50%; left: 50%;">
-        <div class="tooltip">Center of Section 2</div>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="hover-box" style="top: 30%; left: 70%;">
-        <div class="tooltip">Something over here</div>
-      </div>
-    </div>
-  </div>
-</body>
-</html>
+    <
