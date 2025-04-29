@@ -49,6 +49,7 @@
       transform: translateX(-50%);
       white-space: nowrap;
       z-index: 20; /* Tooltip should be above the hover box */
+      pointer-events: none; /* Ensures tooltip doesn't block mouse events */
     }
 
     /* Show tooltip when hovering */
@@ -80,5 +81,25 @@
       <div class="tooltip">Another hotspot</div>
     </div>
   </div>
+
+  <script>
+    // Get all hover boxes
+    const hoverBoxes = document.querySelectorAll('.hover-box');
+
+    // Add mousemove event listener to each hover box
+    hoverBoxes.forEach(box => {
+      const tooltip = box.querySelector('.tooltip');
+
+      box.addEventListener('mousemove', (e) => {
+        // Get cursor's current position
+        const cursorX = e.clientX;
+        const cursorY = e.clientY;
+
+        // Position the tooltip near the cursor
+        tooltip.style.left = `${cursorX + 10}px`; // 10px offset to right
+        tooltip.style.top = `${cursorY + 10}px`;  // 10px offset below
+      });
+    });
+  </script>
 </body>
 </html>
