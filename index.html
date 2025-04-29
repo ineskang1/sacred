@@ -92,8 +92,8 @@
 
       box.addEventListener('mousemove', (e) => {
         // Get cursor's current position
-        const cursorX = e.clientX;
-        const cursorY = e.clientY;
+        const cursorX = e.pageX;
+        const cursorY = e.pageY;
 
         // Position the tooltip near the cursor
         tooltip.style.left = `${cursorX + 4}px`; // 10px offset to right
