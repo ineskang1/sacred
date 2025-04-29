@@ -39,7 +39,7 @@
     .hover-box .tooltip {
       visibility: hidden;
       background-color: rgba(0, 0, 0, 0.75);
-      color: #000;
+      color: #fff;
       text-align: center;
       padding: 6px 10px;
       border-radius: 4px;
@@ -63,7 +63,7 @@
   <div class="scroll-wrapper">
     <!-- Hover boxes positioned anywhere on the image -->
     <div class="hover-box" style="top: 41px; left: 2968px;">
-      <div class="tooltip">Info about this area</div>
+      <div class="tooltip">A flicker of warmth in a cold world. The fire may guide you, or it may consume all that you are, leaving only ashes behind.</div>
     </div>
     <div class="hover-box" style="top: 70%; left: 60%;">
       <div class="tooltip">Another hotspot</div>
@@ -96,8 +96,8 @@
         const cursorY = e.pageY;
 
         // Position the tooltip near the cursor
-        tooltip.style.left = `${cursorX + 4}px`; // 10px offset to right
-        tooltip.style.top = `${cursorY + 4}px`;  // 10px offset below
+        tooltip.style.left = `${cursorX + 2}px`; // 10px offset to right
+        tooltip.style.top = `${cursorY + 2}px`;  // 10px offset below
       });
     });
   </script>
