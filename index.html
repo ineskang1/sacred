@@ -83,45 +83,49 @@
   </div>
 
   <script>
-   hoverBoxes.forEach(box => {
-  const tooltip = box.querySelector('.tooltip');
+ // Get all hover boxes
+    const hoverBoxes = document.querySelectorAll('.hover-box');
 
-  box.addEventListener('mousemove', (e) => {
-    // Get cursor's current position
-    const cursorX = e.clientX + window.scrollX; // Add horizontal scroll offset;
-    const cursorY = e.clientY;
+    // Add mousemove event listener to each hover box
+    hoverBoxes.forEach(box => {
+      const tooltip = box.querySelector('.tooltip');
 
-    // Set offsets
-    const offsetX = 10; // Horizontal offset from the cursor
-    const offsetY = 10; // Vertical offset from the cursor
+      box.addEventListener('mousemove', (e) => {
+        // Get cursor's current position
+        const cursorX = e.clientX;
+        const cursorY = e.clientY;
 
-    // Get the window dimensions
-    const windowWidth = window.innerWidth;
-    const windowHeight = window.innerHeight;
+        // Set offsets for tooltip (adjust to change distance from cursor)
+        const offsetX = 10; // Horizontal offset from the cursor
+        const offsetY = 10; // Vertical offset from the cursor
 
-    // Get tooltip dimensions
-    const tooltipWidth = tooltip.offsetWidth;
-    const tooltipHeight = tooltip.offsetHeight;
+        // Get the window dimensions
+        const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
 
-    // Calculate new position to avoid overflow
-    let newX = cursorX + offsetX;
-    let newY = cursorY + offsetY;
+        // Get tooltip dimensions
+        const tooltipWidth = tooltip.offsetWidth;
+        const tooltipHeight = tooltip.offsetHeight;
 
-    // Ensure the tooltip doesn't overflow the right edge
-    if (newX + tooltipWidth > windowWidth) {
-      newX = cursorX - tooltipWidth - offsetX; // Position left of cursor
-    }
+        // Calculate new position to avoid overflow
+        let newX = cursorX + offsetX;
+        let newY = cursorY + offsetY;
 
-    // Ensure the tooltip doesn't overflow the bottom edge
-    if (newY + tooltipHeight > windowHeight) {
-      newY = cursorY - tooltipHeight - offsetY; // Position above cursor
-    }
+        // Ensure the tooltip doesn't overflow the right edge
+        if (newX + tooltipWidth > windowWidth) {
+          newX = cursorX - tooltipWidth - offsetX; // Position left of cursor
+        }
 
-    // Set the new position
-    tooltip.style.left = `${newX}px`;
-    tooltip.style.top = `${newY}px`;
-  });
-});
+        // Ensure the tooltip doesn't overflow the bottom edge
+        if (newY + tooltipHeight > windowHeight) {
+          newY = cursorY - tooltipHeight - offsetY; // Position above cursor
+        }
+
+        // Set the new position of the tooltip
+        tooltip.style.left = `${newX}px`;
+        tooltip.style.top = `${newY}px`;
+      });
+    });
   </script>
 </body>
 </html>
