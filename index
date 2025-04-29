@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Horizontal Scroll with Hover Boxes</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .scroll-wrapper {
+      display: flex;
+      flex-direction: row;
+      width: max-content;
+      height: 100vh;
+      overflow-x: auto;
+      overflow-y: hidden;
+      white-space: nowrap;
+    }
+
+    .section {
+      flex: none;
+      width: 100vw;
+      height: 100vh;
+      background-image: url('https://freight.cargo.site/t/original/i/76276cec3018a86a7fc3fbbfc96f2d4d5b09a96d6cb64809199cea1219760835/rock2Artboard-42x-100.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+    }
+
+    .hover-box {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      cursor: pointer;
+    }
+
+    .hover-box .tooltip {
+      visibility: hidden;
+      background-color: rgba(0, 0, 0, 0.75);
+      color: #fff;
+      text-align: center;
+      padding: 6px 10px;
+      border-radius: 4px;
+      position: absolute;
+      top: 110%;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      z-index: 10;
+    }
+
+    .hover-box:hover .tooltip {
+      visibility: visible;
+    }
+  </style>
+</head>
+<body>
+  <div class="scroll-wrapper">
+    <div class="section">
+      <div class="hover-box" style="top: 40%; left: 30%;">
+        <div class="tooltip">Info about this area</div>
+      </div>
+      <div class="hover-box" style="top: 70%; left: 60%;">
+        <div class="tooltip">Another hotspot</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="hover-box" style="top: 50%; left: 50%;">
+        <div class="tooltip">Center of Section 2</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="hover-box" style="top: 30%; left: 70%;">
+        <div class="tooltip">Something over here</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
