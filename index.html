@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Horizontal Scroll with Hover Boxes</title>
+  <title>Horizontal Scroll with Single Large Image</title>
   <style>
     /* General body setup */
     body {
@@ -10,27 +10,17 @@
       padding: 0;
       overflow-x: auto; /* Enable horizontal scroll */
       overflow-y: hidden; /* Disable vertical scroll */
-      white-space: nowrap; /* Make child elements inline for horizontal scroll */
       height: 100vh; /* Ensure full viewport height */
     }
 
-    /* Wrapper to contain the horizontal sections */
+    /* Wrapper to hold the image and enable scrolling */
     .scroll-wrapper {
-      display: flex;
-      width: 12518px; /* Ensure sections together stretch beyond viewport */
-      height: 100vh;
-    }
-
-    /* Section setup */
-    .section {
-      flex: none; /* Prevent flex item from shrinking */
-      width: 100vw; /* Full viewport width per section */
-      height: 100vh; /* Full viewport height */
-      background-image: url('background.jpg'); /* Your background image */
-      background-size: cover; /* Ensure the image covers the section */
+      width: 12518px; /* Set this to the width of your image (e.g., 12518px) */
+      height: 100vh; /* Ensure it takes up the full viewport height */
+      background-image: url('background.jpg'); /* Your large background image */
+      background-size: auto; /* Ensure the image size is not distorted */
       background-position: center;
       background-repeat: no-repeat;
-      position: relative;
     }
 
     /* Hover box styles */
@@ -63,27 +53,14 @@
   </style>
 </head>
 <body>
-  <!-- Wrapper for the horizontal scrolling -->
+  <!-- Wrapper for the large image -->
   <div class="scroll-wrapper">
-    <div class="section">
-      <div class="hover-box" style="top: 40%; left: 30%;">
-        <div class="tooltip">Info about this area</div>
-      </div>
-      <div class="hover-box" style="top: 70%; left: 60%;">
-        <div class="tooltip">Another hotspot</div>
-      </div>
+    <!-- Hover boxes positioned anywhere on the image -->
+    <div class="hover-box" style="top: 40%; left: 30%;">
+      <div class="tooltip">Info about this area</div>
     </div>
-
-    <div class="section">
-      <div class="hover-box" style="top: 50%; left: 50%;">
-        <div class="tooltip">Center of Section 2</div>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="hover-box" style="top: 30%; left: 70%;">
-        <div class="tooltip">Something over here</div>
-      </div>
+    <div class="hover-box" style="top: 70%; left: 60%;">
+      <div class="tooltip">Another hotspot</div>
     </div>
   </div>
 </body>
