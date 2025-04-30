@@ -119,4 +119,26 @@
           newX = windowWidth - tooltipWidth - offsetX; // Position tooltip within the right edge
         }
 
-        // Ensure the tooltip doesn't overflow the bottom
+        // Ensure the tooltip doesn't overflow the bottom edge
+        if (newY + tooltipHeight > windowHeight) {
+          newY = windowHeight - tooltipHeight - offsetY; // Position tooltip within the bottom edge
+        }
+
+        // Ensure the tooltip doesn't overflow the left edge
+        if (newX < 0) {
+          newX = 0; // Position tooltip within the left edge
+        }
+
+        // Ensure the tooltip doesn't overflow the top edge
+        if (newY < 0) {
+          newY = 0; // Position tooltip within the top edge
+        }
+
+        // Set the new position of the tooltip
+        tooltip.style.left = `${newX}px`;
+        tooltip.style.top = `${newY}px`;
+      });
+    });
+  </script>
+</body>
+</html>
