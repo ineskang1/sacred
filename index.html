@@ -43,13 +43,11 @@
       padding: 6px 10px;
       border-radius: 4px;
       position: absolute;
-      transform: translateX(-50%);
       white-space: normal;
-      max-width: 40%; /* limits width before wrapping */
+      max-width: 100%; /* limits width before wrapping */
       z-index: 20; /* Tooltip should be above the hover box */
       pointer-events: none; /* Ensures tooltip doesn't block mouse events */
-      max-height: 200px; /* Max height for tooltip */
-      overflow-y: auto; /* Allow scrolling if text overflows */
+      overflow-wrap: break-word; /* Allow scrolling if text overflows */
     }
 
     /* Show tooltip when hovering */
