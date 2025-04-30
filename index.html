@@ -34,7 +34,8 @@
       z-index: 10; /* Ensure hover boxes are on top */
     }
 
-    .hover-box .tooltip {
+    /* Tooltip styles */
+    .tooltip {
       visibility: hidden;
       background-color: rgba(1, 0, 0, 0.75);
       color: #fff;
@@ -47,6 +48,8 @@
       max-width: 40%; /* limits width before wrapping */
       z-index: 20; /* Tooltip should be above the hover box */
       pointer-events: none; /* Ensures tooltip doesn't block mouse events */
+      max-height: 200px; /* Max height for tooltip */
+      overflow-y: auto; /* Allow scrolling if text overflows */
     }
 
     /* Show tooltip when hovering */
@@ -60,75 +63,60 @@
   <div class="scroll-wrapper">
     <!-- Hover boxes positioned anywhere on the image -->
     <div class="hover-box" style="top: 390px; left: 1000px; width: 400px; height: 350px;">
-      <div class="tooltip">Two withered hands, severed at the wrist, forever outstretched as if to receive a mercy that never came. 
-        For seven nights she cast lots in silence, asking not for salvation, but for a sign. None came — only stillness, and then, severance. His hands were all she left behind, palms open, still waiting.
-        Between them, an absent relic, what it never held. Do you seek the relic, or the absence it leaves behind?</div>
+      <div class="tooltip">
+        Two withered hands, severed at the wrist, forever outstretched as if to receive a mercy that never came. 
+        For seven nights she cast lots in silence, asking not for salvation, but for a sign. None came — only stillness, and then, severance. 
+        His hands were all she left behind, palms open, still waiting. Between them, an absent relic, what it never held. 
+        Do you seek the relic, or the absence it leaves behind?
+      </div>
+    </div>
+
     <div class="hover-box" style="top: 41px; left: 3000px; width: 700px; height: 350px;">
-      <div class="tooltip">A flicker of warmth in a cold world. The fire may guide you, or it may consume all that you are, leaving only ashes behind.</div>
+      <div class="tooltip">
+        A flicker of warmth in a cold world. The fire may guide you, or it may consume all that you are, leaving only ashes behind.
+      </div>
+    </div>
   </div>
 
   <script>
-// Get all hover boxes
-const hoverBoxes = document.querySelectorAll('.hover-box');
+    // Get all hover boxes
+    const hoverBoxes = document.querySelectorAll('.hover-box');
 
-// Add mousemove event listener to each hover box
-hoverBoxes.forEach(box => {
-  const tooltip = box.querySelector('.tooltip');
+    // Add mousemove event listener to each hover box
+    hoverBoxes.forEach(box => {
+      const tooltip = box.querySelector('.tooltip');
 
-  box.addEventListener('mousemove', (e) => {
-    // Get cursor's current position
-    const cursorX = e.clientX;
-    const cursorY = e.clientY;
+      box.addEventListener('mousemove', (e) => {
+        // Get cursor's current position
+        const cursorX = e.clientX;
+        const cursorY = e.clientY;
 
-    // Set offsets for tooltip (adjust to change distance from cursor)
-    const offsetX = 10; // Horizontal offset from the cursor
-    const offsetY = 10; // Vertical offset from the cursor
+        // Set offsets for tooltip (adjust to change distance from cursor)
+        const offsetX = 10; // Horizontal offset from the cursor
+        const offsetY = 10; // Vertical offset from the cursor
 
-    // Get the window dimensions
-    const windowWidth = window.innerWidth;
-    const windowHeight = window.innerHeight;
+        // Get the window dimensions
+        const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
 
-    // Get tooltip dimensions
-    const tooltipWidth = tooltip.offsetWidth;
-    const tooltipHeight = tooltip.offsetHeight;
+        // Get tooltip dimensions
+        const tooltipWidth = tooltip.offsetWidth;
+        const tooltipHeight = tooltip.offsetHeight;
 
-    // Set the tooltip height to a specific percentage of window height (e.g., 20% of the window height)
-    const customHeightPercentage = 20; // For 20% of the window height
-    const customHeight = windowHeight * (customHeightPercentage / 100);
+        // Set the tooltip height to a specific percentage of window height (e.g., 20% of the window height)
+        const customHeightPercentage = 20; // For 20% of the window height
+        const customHeight = windowHeight * (customHeightPercentage / 100);
 
-    // Apply the calculated height to the tooltip
-    tooltip.style.height = `${customHeight}px`;
+        // Apply the calculated height to the tooltip
+        tooltip.style.height = `${customHeight}px`;
 
-    // Calculate new position to avoid overflow
-    let newX = cursorX + offsetX;
-    let newY = cursorY + offsetY;
+        // Calculate new position to avoid overflow
+        let newX = cursorX + offsetX;
+        let newY = cursorY + offsetY;
 
-    // Ensure the tooltip doesn't overflow the right edge
-    if (newX + tooltipWidth > windowWidth) {
-      newX = windowWidth - tooltipWidth - offsetX; // Position tooltip within the right edge
-    }
+        // Ensure the tooltip doesn't overflow the right edge
+        if (newX + tooltipWidth > windowWidth) {
+          newX = windowWidth - tooltipWidth - offsetX; // Position tooltip within the right edge
+        }
 
-    // Ensure the tooltip doesn't overflow the bottom edge
-    if (newY + tooltipHeight > windowHeight) {
-      newY = windowHeight - tooltipHeight - offsetY; // Position tooltip within the bottom edge
-    }
-
-    // Ensure the tooltip doesn't overflow the left edge
-    if (newX < 0) {
-      newX = 0; // Position tooltip within the left edge
-    }
-
-    // Ensure the tooltip doesn't overflow the top edge
-    if (newY < 0) {
-      newY = 0; // Position tooltip within the top edge
-    }
-
-    // Set the new position of the tooltip
-    tooltip.style.left = `${newX}px`;
-    tooltip.style.top = `${newY}px`;
-  });
-});
-
-  </script>
-</body>
-</html>
+        // Ensure the tooltip doesn't overflow the bottom
