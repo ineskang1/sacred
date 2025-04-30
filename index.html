@@ -76,17 +76,17 @@
         // Get mouse position and calculate tooltip position
         const offsetX = 6;
         const offsetY = 6;
-        let newX = e.clientX + offsetX;
-        let newY = e.clientY + offsetY;
+        let newX = e.pageX + offsetX;
+        let newY = e.pageY + offsetY;
 
         const tooltipRect = tooltip.getBoundingClientRect();
         const windowWidth = window.innerWidth;
         const windowHeight = window.innerHeight;
 
-        if (newX + tooltipRect.width > windowWidth) {
+        if ((newX - window.scrollX) + tooltipRect.width > windowWidth) {
           newX = e.clientX - tooltipRect.width - offsetX;
         }
-        if (newY + tooltipRect.height > windowHeight) {
+        if ((newY - window.scrollY) + tooltipRect.height > windowHeight) {
           newY = e.clientY - tooltipRect.height - offsetY;
         }
 
